@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewReparacionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewReparacionLabel_idReparacion}"/>
+                    <h:outputText value="#{reparacionController.selected.idReparacion}" title="#{bundle.ViewReparacionTitle_idReparacion}"/>
+                    <h:outputText value="#{bundle.ViewReparacionLabel_atendido}"/>
+                    <h:outputText value="#{reparacionController.selected.atendido}" title="#{bundle.ViewReparacionTitle_atendido}"/>
+                    <h:outputText value="#{bundle.ViewReparacionLabel_marca}"/>
+                    <h:outputText value="#{reparacionController.selected.marca}" title="#{bundle.ViewReparacionTitle_marca}"/>
+                    <h:outputText value="#{bundle.ViewReparacionLabel_modelo}"/>
+                    <h:outputText value="#{reparacionController.selected.modelo}" title="#{bundle.ViewReparacionTitle_modelo}"/>
+                    <h:outputText value="#{bundle.ViewReparacionLabel_fallas}"/>
+                    <h:outputText value="#{reparacionController.selected.fallas}" title="#{bundle.ViewReparacionTitle_fallas}"/>
+                    <h:outputText value="#{bundle.ViewReparacionLabel_causas}"/>
+                    <h:outputText value="#{reparacionController.selected.causas}" title="#{bundle.ViewReparacionTitle_causas}"/>
+                    <h:outputText value="#{bundle.ViewReparacionLabel_observacion}"/>
+                    <h:outputText value="#{reparacionController.selected.observacion}" title="#{bundle.ViewReparacionTitle_observacion}"/>
+                    <h:outputText value="#{bundle.ViewReparacionLabel_diagnostico}"/>
+                    <h:outputText value="#{reparacionController.selected.diagnostico}" title="#{bundle.ViewReparacionTitle_diagnostico}"/>
+                    <h:outputText value="#{bundle.ViewReparacionLabel_fechaRecepcion}"/>
+                    <h:outputText value="#{reparacionController.selected.fechaRecepcion}" title="#{bundle.ViewReparacionTitle_fechaRecepcion}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewReparacionLabel_fechaAprobacion}"/>
+                    <h:outputText value="#{reparacionController.selected.fechaAprobacion}" title="#{bundle.ViewReparacionTitle_fechaAprobacion}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewReparacionLabel_fechaEntrega}"/>
+                    <h:outputText value="#{reparacionController.selected.fechaEntrega}" title="#{bundle.ViewReparacionTitle_fechaEntrega}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewReparacionLabel_estado}"/>
+                    <h:outputText value="#{reparacionController.selected.estado}" title="#{bundle.ViewReparacionTitle_estado}"/>
+                    <h:outputText value="#{bundle.ViewReparacionLabel_foto}"/>
+                    <h:outputText value="#{reparacionController.selected.foto}" title="#{bundle.ViewReparacionTitle_foto}"/>
+                    <h:outputText value="#{bundle.ViewReparacionLabel_idCliente}"/>
+                    <h:outputText value="#{reparacionController.selected.idCliente}" title="#{bundle.ViewReparacionTitle_idCliente}"/>
+                    <h:outputText value="#{bundle.ViewReparacionLabel_idEmpleado}"/>
+                    <h:outputText value="#{reparacionController.selected.idEmpleado}" title="#{bundle.ViewReparacionTitle_idEmpleado}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{reparacionController.destroyAndView}" value="#{bundle.ViewReparacionDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewReparacionEditLink}"/>
+                <br />
+                <h:commandLink action="#{reparacionController.prepareCreate}" value="#{bundle.ViewReparacionCreateLink}" />
+                <br />
+                <h:commandLink action="#{reparacionController.prepareList}" value="#{bundle.ViewReparacionShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewReparacionIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewUsuariosTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewUsuariosLabel_idUsuario}"/>
+                    <h:outputText value="#{usuariosController.selected.idUsuario}" title="#{bundle.ViewUsuariosTitle_idUsuario}"/>
+                    <h:outputText value="#{bundle.ViewUsuariosLabel_usuario}"/>
+                    <h:outputText value="#{usuariosController.selected.usuario}" title="#{bundle.ViewUsuariosTitle_usuario}"/>
+                    <h:outputText value="#{bundle.ViewUsuariosLabel_clave}"/>
+                    <h:outputText value="#{usuariosController.selected.clave}" title="#{bundle.ViewUsuariosTitle_clave}"/>
+                    <h:outputText value="#{bundle.ViewUsuariosLabel_venta}"/>
+                    <h:outputText value="#{usuariosController.selected.venta}" title="#{bundle.ViewUsuariosTitle_venta}"/>
+                    <h:outputText value="#{bundle.ViewUsuariosLabel_compra}"/>
+                    <h:outputText value="#{usuariosController.selected.compra}" title="#{bundle.ViewUsuariosTitle_compra}"/>
+                    <h:outputText value="#{bundle.ViewUsuariosLabel_proveedor}"/>
+                    <h:outputText value="#{usuariosController.selected.proveedor}" title="#{bundle.ViewUsuariosTitle_proveedor}"/>
+                    <h:outputText value="#{bundle.ViewUsuariosLabel_asistencia}"/>
+                    <h:outputText value="#{usuariosController.selected.asistencia}" title="#{bundle.ViewUsuariosTitle_asistencia}"/>
+                    <h:outputText value="#{bundle.ViewUsuariosLabel_reparacion}"/>
+                    <h:outputText value="#{usuariosController.selected.reparacion}" title="#{bundle.ViewUsuariosTitle_reparacion}"/>
+                    <h:outputText value="#{bundle.ViewUsuariosLabel_cliente}"/>
+                    <h:outputText value="#{usuariosController.selected.cliente}" title="#{bundle.ViewUsuariosTitle_cliente}"/>
+                    <h:outputText value="#{bundle.ViewUsuariosLabel_producto}"/>
+                    <h:outputText value="#{usuariosController.selected.producto}" title="#{bundle.ViewUsuariosTitle_producto}"/>
+                    <h:outputText value="#{bundle.ViewUsuariosLabel_personal}"/>
+                    <h:outputText value="#{usuariosController.selected.personal}" title="#{bundle.ViewUsuariosTitle_personal}"/>
+                    <h:outputText value="#{bundle.ViewUsuariosLabel_caja}"/>
+                    <h:outputText value="#{usuariosController.selected.caja}" title="#{bundle.ViewUsuariosTitle_caja}"/>
+                    <h:outputText value="#{bundle.ViewUsuariosLabel_idEmpleado}"/>
+                    <h:outputText value="#{usuariosController.selected.idEmpleado}" title="#{bundle.ViewUsuariosTitle_idEmpleado}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{usuariosController.destroyAndView}" value="#{bundle.ViewUsuariosDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewUsuariosEditLink}"/>
+                <br />
+                <h:commandLink action="#{usuariosController.prepareCreate}" value="#{bundle.ViewUsuariosCreateLink}" />
+                <br />
+                <h:commandLink action="#{usuariosController.prepareList}" value="#{bundle.ViewUsuariosShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewUsuariosIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

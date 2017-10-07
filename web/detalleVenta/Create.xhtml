@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateDetalleVentaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateDetalleVentaLabel_idDetalleventa}" for="idDetalleventa" />
+                    <h:inputText id="idDetalleventa" value="#{detalleVentaController.selected.idDetalleventa}" title="#{bundle.CreateDetalleVentaTitle_idDetalleventa}" required="true" requiredMessage="#{bundle.CreateDetalleVentaRequiredMessage_idDetalleventa}"/>
+                    <h:outputLabel value="#{bundle.CreateDetalleVentaLabel_idProducto}" for="idProducto" />
+                    <h:inputText id="idProducto" value="#{detalleVentaController.selected.idProducto}" title="#{bundle.CreateDetalleVentaTitle_idProducto}" />
+                    <h:outputLabel value="#{bundle.CreateDetalleVentaLabel_precio}" for="precio" />
+                    <h:inputText id="precio" value="#{detalleVentaController.selected.precio}" title="#{bundle.CreateDetalleVentaTitle_precio}" />
+                    <h:outputLabel value="#{bundle.CreateDetalleVentaLabel_cantidad}" for="cantidad" />
+                    <h:inputText id="cantidad" value="#{detalleVentaController.selected.cantidad}" title="#{bundle.CreateDetalleVentaTitle_cantidad}" />
+                    <h:outputLabel value="#{bundle.CreateDetalleVentaLabel_idVenta}" for="idVenta" />
+                    <h:inputText id="idVenta" value="#{detalleVentaController.selected.idVenta}" title="#{bundle.CreateDetalleVentaTitle_idVenta}" />
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{detalleVentaController.create}" value="#{bundle.CreateDetalleVentaSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{detalleVentaController.prepareList}" value="#{bundle.CreateDetalleVentaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateDetalleVentaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

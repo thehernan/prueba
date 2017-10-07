@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListCajaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListCajaEmpty}" rendered="#{cajaController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{cajaController.items.rowCount > 0}">
+                    <h:outputText value="#{cajaController.pagination.pageFirstItem + 1}..#{cajaController.pagination.pageLastItem + 1}/#{cajaController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{cajaController.previous}" value="#{bundle.Previous} #{cajaController.pagination.pageSize}" rendered="#{cajaController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{cajaController.next}" value="#{bundle.Next} #{cajaController.pagination.pageSize}" rendered="#{cajaController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{cajaController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCajaTitle_idCaja}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idCaja}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCajaTitle_fechahoraApertura}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechahoraApertura}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCajaTitle_fechahoraCierre}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechahoraCierre}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCajaTitle_aperturadinero}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.aperturadinero}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCajaTitle_cierradinero}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cierradinero}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCajaTitle_estado}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.estado}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCajaTitle_descripcion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.descripcion}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCajaTitle_idEmpleado}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idEmpleado}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{cajaController.prepareView}" value="#{bundle.ListCajaViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{cajaController.prepareEdit}" value="#{bundle.ListCajaEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{cajaController.destroy}" value="#{bundle.ListCajaDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{cajaController.prepareCreate}" value="#{bundle.ListCajaCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListCajaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

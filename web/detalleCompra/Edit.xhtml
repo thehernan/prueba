@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditDetalleCompraTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditDetalleCompraLabel_idDetallecompra}" for="idDetallecompra" />
+                    <h:inputText id="idDetallecompra" value="#{detalleCompraController.selected.idDetallecompra}" title="#{bundle.EditDetalleCompraTitle_idDetallecompra}" required="true" requiredMessage="#{bundle.EditDetalleCompraRequiredMessage_idDetallecompra}"/>
+                    <h:outputLabel value="#{bundle.EditDetalleCompraLabel_cantidad}" for="cantidad" />
+                    <h:inputText id="cantidad" value="#{detalleCompraController.selected.cantidad}" title="#{bundle.EditDetalleCompraTitle_cantidad}" />
+                    <h:outputLabel value="#{bundle.EditDetalleCompraLabel_precio}" for="precio" />
+                    <h:inputText id="precio" value="#{detalleCompraController.selected.precio}" title="#{bundle.EditDetalleCompraTitle_precio}" />
+                    <h:outputLabel value="#{bundle.EditDetalleCompraLabel_idCompra}" for="idCompra" />
+                    <h:selectOneMenu id="idCompra" value="#{detalleCompraController.selected.idCompra}" title="#{bundle.EditDetalleCompraTitle_idCompra}" >
+                        <f:selectItems value="#{comprasController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditDetalleCompraLabel_idProducto}" for="idProducto" />
+                    <h:selectOneMenu id="idProducto" value="#{detalleCompraController.selected.idProducto}" title="#{bundle.EditDetalleCompraTitle_idProducto}" >
+                        <f:selectItems value="#{productoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{detalleCompraController.update}" value="#{bundle.EditDetalleCompraSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditDetalleCompraViewLink}"/>
+                <br />
+                <h:commandLink action="#{detalleCompraController.prepareList}" value="#{bundle.EditDetalleCompraShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditDetalleCompraIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
